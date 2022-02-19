@@ -2,7 +2,8 @@ import { ThemeProvider } from 'styled-components';
 import React from 'react';
 import theme from './src/styles/theme';
 // import { Home } from './src/screens/Home';
-import { CardDetails } from './src/screens/CardDetails';
+// import { CardDetails } from './src/screens/CardDetails';
+import { Scheduling } from './src/screens/Scheduling';
 import {
   useFonts,
   Inter_400Regular,
@@ -32,7 +33,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CardDetails />
+      <Scheduling />
     </ThemeProvider>
   );
 }
