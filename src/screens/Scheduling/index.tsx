@@ -1,5 +1,6 @@
 import React from 'react';
 import { BackButton } from '../../components/BackButton';
+import { useNavigation } from '@react-navigation/native';
 
 import { StatusBar } from 'react-native';
 import { Button } from '../../components/Button';
@@ -21,6 +22,10 @@ import {
 } from './styles';
 
 export function Scheduling() {
+    const navigation = useNavigation();
+    function handleConfirmRental() {
+        navigation.navigate('SchedulingDetails')
+    }
     return (
         <Container>
             <StatusBar
@@ -62,6 +67,7 @@ export function Scheduling() {
             <Footer>
                 <Button
                     title='Confirmar'
+                    onPress={handleConfirmRental}
                 />
             </Footer>
         </Container>

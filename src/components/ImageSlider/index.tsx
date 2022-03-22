@@ -3,15 +3,17 @@ import { CardImage } from '../Car/styles';
 
 import {
     CardImageWrapper,
-    Container, 
-    ImageIndex, 
+    Container,
+    ImageIndex,
     ImageIndexes
 } from './styles';
 interface Props {
     imageUrl: string[];
 }
 
-export function ImageSlider({imageUrl}: Props) {
+export function ImageSlider({ imageUrl }: Props) {
+
+
     return (
         <Container>
             <ImageIndexes>
@@ -22,8 +24,9 @@ export function ImageSlider({imageUrl}: Props) {
             </ImageIndexes>
             <CardImageWrapper>
                 <CardImage
-                    source={{ uri: imageUrl[0] }}
-                    // resizeMethod='scal'
+                    source={{
+                        uri: imageUrl[0]
+                    }}
                     resizeMode='contain'
                 />
             </CardImageWrapper>

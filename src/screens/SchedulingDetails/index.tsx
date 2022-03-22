@@ -1,17 +1,25 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { Accessory } from '../../components/Accessory';
 import { BackButton } from '../../components/BackButton';
 import { Button } from '../../components/Button';
 import { ImageSlider } from '../../components/ImageSlider';
+
+import { Feather } from '@expo/vector-icons';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { useTheme } from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
+
 import {
-    About,
     Accessories,
     Brend,
+    CalendarIcon,
     CardImages,
     Container,
     Content,
+    DateInfo,
+    DateTitle,
+    DateValue,
     Description,
     Details,
     Footer,
@@ -19,7 +27,13 @@ import {
     Name,
     Period,
     Price,
-    Rent
+    Rent,
+    RentalPeriod,
+    RentalPrice,
+    RentalPriceDetails,
+    RentalPriceLabel,
+    RentalPriceQuota,
+    RentalPriceTotal
 } from './styles';
 
 
@@ -31,11 +45,12 @@ import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
 
 
-export function CardDetails() {
-    const navigation = useNavigation();
+export function SchedulingDetails() {
+    const theme = useTheme();
+    const navigation = useNavigation()
 
     function handleConfirmRental() {
-        navigation.navigate('Scheduling')
+        navigation.navigate('SchedulingComplete');
     }
     return (
         <Container>
@@ -52,7 +67,7 @@ export function CardDetails() {
             </Header>
             <CardImages>
                 <ImageSlider
-                    imageUrl={['https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngpix.com%2Fwp-content%2Fuploads%2F2016%2F06%2FPNGPIX-COM-Black-Lamborghini-Centenario-LP-770-4-Car-PNG-Image.png&f=1&nofb=1']}
+                    imageUrl={['https://i.pinimg.com/originals/25/17/0f/25170f88757566370cc44f096916dd41.png']}
                 />
             </CardImages>
 
@@ -76,13 +91,46 @@ export function CardDetails() {
                     <Accessory name="2 pessoas" icon={peopleSvg} />
                 </Accessories>
 
-                <About>
-                    Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
-                </About>
+                <RentalPeriod>
+
+                    <CalendarIcon>
+                        <Feather
+                            name='calendar'
+                            size={RFValue(24)}
+                            color={theme.colors.shape}
+                        />
+                    </CalendarIcon>
+                    <DateInfo>
+                        <DateTitle>De</DateTitle>
+                        <DateValue>18/02/2021</DateValue>
+                    </DateInfo>
+
+                    <Feather
+                        name='chevron-right'
+                        size={RFValue(10)}
+                        color={theme.colors.text}
+                    />
+
+                    <DateInfo>
+                        <DateTitle>Até</DateTitle>
+                        <DateValue>25/02/2021</DateValue>
+                    </DateInfo>
+
+                </RentalPeriod>
+
+                <RentalPrice>
+                    <RentalPriceLabel>TOTAL</RentalPriceLabel>
+                    <RentalPriceDetails>
+                        <RentalPriceQuota>R$ 580 x3 diárias</RentalPriceQuota>
+                        <RentalPriceTotal>R$ 2.900</RentalPriceTotal>
+                    </RentalPriceDetails>
+                </RentalPrice>
+
             </Content>
             <Footer>
                 <Button
-                    title='Escolher período de aluguel'
+                    title='Alugar agora'
+                    color={theme.colors.success}
                     onPress={handleConfirmRental}
                 />
             </Footer>
