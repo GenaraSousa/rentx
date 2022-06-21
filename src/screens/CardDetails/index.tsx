@@ -37,6 +37,10 @@ export function CardDetails() {
     function handleConfirmRental() {
         navigation.navigate('Scheduling')
     }
+
+    function handleBack() {
+        navigation.goBack();
+    }
     return (
         <Container>
             <StatusBar
@@ -47,7 +51,7 @@ export function CardDetails() {
             <Header>
                 <BackButton
                     isGray={true}
-                    onPress={() => { }}
+                    onPress={handleBack}
                 />
             </Header>
             <CardImages>
